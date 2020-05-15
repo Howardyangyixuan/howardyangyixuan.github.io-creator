@@ -2,6 +2,8 @@
 title: "JavaScript入门"
 date: 2020-05-11T19:54:16+08:00
 draft: false
+tags: ["JS","前端"]
+categories: ["JS"]
 ---
 
 # JavaScript入门

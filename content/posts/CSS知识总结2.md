@@ -2,6 +2,8 @@
 title: "CSS知识总结2"
 date: 2020-05-09T14:44:23+08:00
 draft: false
+tags: ["CSS","前端"]
+categories: ["CSS"]
 ---
 
 # CSS 知识总结 2：CSS布局

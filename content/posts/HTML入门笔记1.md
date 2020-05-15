@@ -2,6 +2,8 @@
 title: "HTML入门笔记1"
 date: 2020-05-04T15:14:11+08:00
 draft: false
+tags: ["HTML","前端"]
+categories: ["HTML"]
 ---
 
 # HTML 入门笔记 1

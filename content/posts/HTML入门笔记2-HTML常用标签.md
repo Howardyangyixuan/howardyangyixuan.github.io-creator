@@ -2,6 +2,8 @@
 title: "HTML入门笔记2 HTML常用标签"
 date: 2020-05-06T11:42:13+08:00
 draft: false
+tags: ["HTML","前端"]
+categories: ["HTML"]
 ---
 
 # HTML 入门笔记 2 - HTML 常用标签
