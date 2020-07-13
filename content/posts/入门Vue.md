@@ -70,7 +70,7 @@ categories: ["前端框架"]
 
 ## 6. Vue 完整版 vs 运行时版本
 
-![Vue 版本说明](/images/Vue版本说明.png)
+![Vue 版本说明](/images/vue版本说明.png)
 
 完整版：有 compiler 将字符串转换为 DOM 节点，可以从 html 中获取视图，类似在页面中进行编辑
 
