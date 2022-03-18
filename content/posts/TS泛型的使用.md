@@ -1,6 +1,8 @@
 ---
 title: "TS泛型的使用"
 date: 2021-04-05T23:14:00+08:00
+tags: ["JS","前端"]
+categories: ["JS"]
 draft: false
 ---
 
