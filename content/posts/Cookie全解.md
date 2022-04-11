@@ -85,8 +85,8 @@ Set-Cookie:
 3. Domain：哪些Host（主机/域名）可以接受cookie。默认值为当前访问地址的Host，**注意：使用默认值时，不包含子域名，指定时一般默认包含子域名。**
 4. Path：Host下的哪些路径可以接受cookie。**注意：目录的下级目录也满足匹配的条件（例如，如果 path=/docs，那么 "/docs" 和 "/docs/Web/HTTP" 都满足条件）。**
 5. Secure：Cookie 只有在请求使用SSL和HTTPS协议的时候才会被发送到服务器。
-6. HttpOnly：限制 Cookie 通过 JavaScript 经由  Document.cookie 属性、XMLHttpRequest 和  Request APIs 进行访问，以防范[跨站脚本攻击（XSS）](#32-会话劫持和xss)
-7. [【新属性】](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05)SameSite：限制第三方Cookie与跨域请求一起发送，这样可以在一定程度上防范跨站[请求伪造攻击（CSRF）](#33-跨站请求伪造csrf)。默认是Lax，只允许导航到目标网址的GET请求，Strict完全禁止跨域时携带第三方Cookie。对于没有实现该属性的浏览器，其行为等同于 None，Cookies 会被包含在任何请求中。
+6. HttpOnly：限制 Cookie 通过 JavaScript 经由  Document.cookie 属性、XMLHttpRequest 和  Request APIs 进行访问，以防范[跨站脚本攻击（XSS）](#31-跨站脚本攻击-xsscross-site-scripting)
+7. [【新属性】](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05)SameSite：限制第三方Cookie与跨域请求一起发送，这样可以在一定程度上防范跨站[请求伪造攻击（CSRF）](#33-跨站请求伪造-csrfcross-site-request-forgery)。默认是Lax，只允许导航到目标网址的GET请求携带Cookie，而Strict完全禁止跨域时携带[第三方Cookie](#34-跟踪和隐私)。对于没有实现该属性的浏览器，其行为等同于 None，Cookies 会被包含在任何请求中。
 8. cookie-name(Cookie 前缀)：对于支持 Cookie 前缀的浏览器来说，以 **__Secure-** 或 **__Host-** 为前缀的 Cookie，必须设置 Secure 属性，即必须在HTTPS安全连接中使设置cookie。并且，以 __Host- 为前缀的Cookie，path 属性的值必须为 "/" ，且不能含有 domain 属性（表示整个站点该cookie由该域独享，不与下级域名共享），否则无法成功设置Cookie。 而不支持 cookie 前缀的浏览器则并不检查相应的cookie属性是否合规，总是能成功设置cookie。
 ### 1.3. Cookie作用域与非法域(设置限制）
 Cookie的作用域：Domain 和 Path 标识定义了Cookie的作用域，即该cookie允许哪些域名设置并访问。不考虑Path则可以总结为，当前域只能设置或者读取 Domain 为 ***「当前域名或者上级域名」*** 的Cookie。
@@ -105,7 +105,7 @@ response.setHeader("Set-Cookie","Domain=.icu");
 
 ### 1.4. Cookie注意事项
 1.  无论使用任何安全措施，敏感信息都不应该通过 Cookie 传输，因为 Cookie 本质上无法保证安全，可以访问客户端硬盘的人都可以读取Cookie。
-2. 每当用户进行身份验证时，服务器端都应重新生成并重新发送会话 Cookie，甚至是已经存在的会话 Cookie。这样有助于防止[会话劫持](#33-会话固定攻击session-fixation-attacks)，在该攻击中第三方可以重用用户的会话。
+2. 每当用户进行身份验证时，服务器端都应重新生成并重新发送会话 Cookie，甚至是已经存在的会话 Cookie。这样有助于防止[会话劫持](#32-会话攻击)，在该攻击中第三方可以重用用户的会话。
 3. 当指定domain时，实际上会在domain值前面加点（.），例如domain=yangyixuan.icu，事實上值是.yangyixuan.icu，那么cookie对yangyixuan.icu和其子域名（如二级域名.www.yangyixuan.icu）都是有效的，如果使用默认值，则不会加点，那么cookie只对当前域名生效。
 
 ## 2. Cookie与其他存储方式的区别 
@@ -150,7 +150,7 @@ let book = sessionStorage.website;
 
 设置HttpOnly属性可以防止Cookie 通过 JavaScript 经由 Document.cookie 属性、XMLHttpRequest 和 Request APIs 进行访问后泄漏。
 
-XSS更多细节，详见[XSS实战](https://yangyixuan.icu/posts/XSS%E5%AE%9E%E6%88%98/)
+XSS更多细节，详见[XSS实战](http://yangyixuan.icu/posts/xss%E5%AE%9E%E6%88%98/)
 ### 3.2. 会话攻击
 在Session会话中，为了维持来自同一个用户的不同请求之间的状态，客户端必须要给服务器端发送一个唯一的身份标识符(Session ID)点， 而这就给了攻击者可乘之机。
 
