@@ -51,7 +51,7 @@ XSS 的本质是：来自不可信来源的信息包含恶意代码，未经过�
       2. 过滤： 移除用户上传的DOM属性，如onerror，onclick等，移除用户上传的Style节点、Script节点、 iframe节点等
 			3. 限制：如控制用户输入内容长度控制等
 2. XSS系统性防御措施：
-   1. 设置CSP网页安全政策（Content Security Policy：CSP 的实质就是白名单制度，开发者提供配置明确告诉客户端，哪些外部资源可以加载和执行。可以通过HTTP 头信息的Content-Security-Policy的字段或通过网页的<meta>标签进行配置。
+   1. 设置CSP内容安全政策（Content Security Policy：CSP 的实质就是白名单制度，开发者提供配置明确告诉客户端，哪些外部资源可以加载和执行。可以通过HTTP 头信息的Content-Security-Policy的字段或通过网页的<meta>标签进行配置。
 	 2. XSS检测工具：使用 [Arachni](https://github.com/Arachni/arachni)、[Mozilla HTTP Observatory](https://github.com/mozilla/http-observatory/)等XSS自动检测工具。
 
 <hr>
